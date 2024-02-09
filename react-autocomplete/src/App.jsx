@@ -1,16 +1,35 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import ContentLoader from "react-content-loader";
 import "./App.css";
+
+const MyLoader = (props) => (
+  <ContentLoader
+    speed={2}
+    width={500}
+    height={60}
+    viewBox="0 0 500 60"
+    backgroundColor="#f3f3f3"
+    foregroundColor="#ecebeb"
+    {...props}
+  >
+    <rect x="32" y="54" rx="0" ry="0" width="1" height="0" />
+    <rect x="15" y="5" rx="0" ry="0" width="60" height="50" />
+    <rect x="100" y="11" rx="0" ry="0" width="136" height="9" />
+    <rect x="99" y="36" rx="0" ry="0" width="212" height="7" />
+  </ContentLoader>
+);
 
 function App() {
   const [state, setState] = useState({
     search: "",
     result: [],
     isTyping: false,
+    isLoading: false,
   });
 
-  const { search, result, isTyping } = state;
+  const { search, result, isTyping, isLoading } = state;
 
-  const showNoMatch = result.length === 0 && search.trim() && isTyping;
+  const showNoMatch = result.length === 0 && isTyping;
 
   useEffect(() => {
     const controller = new AbortController();
@@ -18,6 +37,11 @@ function App() {
 
     const fetchData = async () => {
       try {
+        setState((prevState) => ({
+          ...prevState,
+          isLoading: true,
+        }));
+
         const url = `http://localhost:3000/api?s=${search}`;
         const response = await fetch(url, { signal });
 
@@ -31,12 +55,17 @@ function App() {
           ...prevState,
           result: search.trim() ? data : [],
           isTyping: !!search.trim(),
+          isLoading: false,
         }));
       } catch (error) {
         if (error.name === "AbortError") {
           console.log("Fetch aborted");
         } else {
           console.error(error);
+          setState((prevState) => ({
+            ...prevState,
+            isLoading: false,
+          }));
         }
       }
     };
@@ -60,43 +89,51 @@ function App() {
     console.log(item);
   };
 
+  const handleInputChange = (e) => {
+    setState((prevState) => ({
+      ...prevState,
+      search: e.target.value,
+      isLoading: true,
+    }));
+  };
+
   return (
     <div className="search" onBlur={handleBlur}>
       <input
-        onChange={(e) =>
-          setState((prevState) => ({
-            ...prevState,
-            search: e.target.value,
-          }))
-        }
+        onChange={handleInputChange}
         value={search}
         type="search"
         autoFocus
         placeholder="Search for something..."
-        className={isTyping ? "active" : ""}
+        className={
+          search.trim() || result.length || showNoMatch ? "active" : ""
+        }
       />
       <hr />
 
-      {isTyping && (
-        <div className="search-result">
-          {result.map((item, index) => (
-            <div
-              onClick={() => getItemDetail(item)}
-              key={index}
-              className="search-result-item"
-            >
-              <img src={item.image} alt="" />
-              <div className="info">
-                <h3>{item.title}</h3>
-                <p>{item.data}</p>
-              </div>
+      <div className="search-result">
+        {isLoading &&
+          !result.length &&
+          !!search.trim() &&
+          !showNoMatch &&
+          new Array(3).fill().map((_, index) => <MyLoader key={index} />)}
+        {result.map((item, index) => (
+          <div
+            onClick={() => getItemDetail(item)}
+            key={index}
+            className="search-result-item"
+          >
+            <img src={item.image} alt="" />
+            <div className="info">
+              <h3>{item.title}</h3>
+              <p>{item.data}</p>
             </div>
-          ))}
-          {showNoMatch && (
-            <div className="not-found">No results found for "{search}"!</div>
-          )}
-        </div>
-      )}
+          </div>
+        ))}
+        {showNoMatch && (
+          <div className="not-found">No results found for "{search}"!</div>
+        )}
+      </div>
     </div>
   );
 }
