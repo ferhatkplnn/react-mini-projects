@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "title": "Doğa Yürüyüşü",
+    "data": "Güzel bir günbatımında ormanlık alanda yürüyüş yapmak harikaydı.",
+    "image": "https://picsum.photos/id/201/200/300"
+  },
+  {
+    "id": 2,
+    "title": "Şehir Keşfi",
+    "data": "Şehir merkezindeki tarihi yerleri ziyaret etmek çok ilginçti.",
+    "image": "https://picsum.photos/id/202/200/300"
+  },
+  {
+    "id": 3,
+    "title": "Kahvaltı Zamanı",
+    "data": "Lezzetli bir kahvaltıyla güne enerjik bir başlangıç yaptım.",
+    "image": "https://picsum.photos/id/203/200/300"
+  },
+  {
+    "id": 4,
+    "title": "Plaj Günü",
+    "data": "Kumların üstünde güneşin tadını çıkarmak muazzamdı.",
+    "image": "https://picsum.photos/id/204/200/300"
+  },
+  {
+    "id": 5,
+    "title": "Kitap Okuma Saati",
+    "data": "Sakin bir günün ardından kitap okuma keyfi harikaydı.",
+    "image": "https://picsum.photos/id/205/200/300"
+  },
+  {
+    "id": 6,
+    "title": "Yemek Deneyimi",
+    "data": "Yeni bir restoranda farklı lezzetleri denemek eğlenceliydi.",
+    "image": "https://picsum.photos/id/206/200/300"
+  },
+  {
+    "id": 7,
+    "title": "Sanat Sergisi",
+    "data": "Güzel sanat eserlerini sergileyen bir galeriyi gezdim.",
+    "image": "https://picsum.photos/id/207/200/300"
+  },
+  {
+    "id": 8,
+    "title": "Bisiklet Turu",
+    "data": "Şehri bisikletle keşfetmek nefes kesiciydi.",
+    "image": "https://picsum.photos/id/208/200/300"
+  },
+  {
+    "id": 9,
+    "title": "Konser Keyfi",
+    "data": "Sevdiğim sanatçının konserini izlemek unutulmazdı.",
+    "image": "https://picsum.photos/id/209/200/300"
+  },
+  {
+    "id": 10,
+    "title": "Piknik Zamanı",
+    "data": "Ailemle birlikte piknik yapmak çok keyifli geçti.",
+    "image": "https://picsum.photos/id/210/200/300"
+  },
+  {
+    "id": 11,
+    "title": "Güneşli Gün",
+    "data": "Güneşli bir günün tadını çıkarmak için plaja gittim.",
+    "image": "https://picsum.photos/id/211/200/300"
+  },
+  {
+    "id": 12,
+    "title": "Müze Gezisi",
+    "data": "Tarihi eserlerle dolu bir müzeyi ziyaret etmek çok öğreticiydi.",
+    "image": "https://picsum.photos/id/212/200/300"
+  },
+  {
+    "id": 13,
+    "title": "Film Gecesi",
+    "data": "Yeni çıkan bir filmi izleyerek rahatladım.",
+    "image": "https://picsum.photos/id/213/200/300"
+  },
+  {
+    "id": 14,
+    "title": "Spor Zamanı",
+    "data": "Arkadaşlarımla spor yaparak eğlenceli bir gün geçirdik.",
+    "image": "https://picsum.photos/id/214/200/300"
+  },
+  {
+    "id": 15,
+    "title": "Alışveriş Keyfi",
+    "data": "Moda mağazalarını gezip alışveriş yapmak çok zevkliydi.",
+    "image": "https://picsum.photos/id/215/200/300"
+  },
+  {
+    "id": 16,
+    "title": "Mola Zamanı",
+    "data": "Yoğun bir günün ardından kısa bir mola verdim.",
+    "image": "https://picsum.photos/id/216/200/300"
+  },
+  {
+    "id": 17,
+    "title": "Gurme Deneyimi",
+    "data": "Şefin özel lezzetlerini denemek harika bir deneyimdi.",
+    "image": "https://picsum.photos/id/217/200/300"
+  },
+  {
+    "id": 18,
+    "title": "Bahçe Bakımı",
+    "data": "Bahçemde çiçeklerle ilgilenmek huzur vericiydi.",
+    "image": "https://picsum.photos/id/218/200/300"
+  },
+  {
+    "id": 19,
+    "title": "Güneş Batışı",
+    "data": "Deniz kenarında güneşin batışını izlemek büyüleyiciydi.",
+    "image": "https://picsum.photos/id/219/200/300"
+  },
+  {
+    "id": 20,
+    "title": "Gece Yürüyüşü",
+    "data": "Ay ışığında yapılan bir gece yürüyüşü çok romantikti.",
+    "image": "https://picsum.photos/id/220/200/300"
+  }
+]
