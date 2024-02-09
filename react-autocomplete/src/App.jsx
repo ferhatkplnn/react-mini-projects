@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import ContentLoader from "react-content-loader";
 import "./App.css";
 
@@ -23,13 +23,14 @@ function App() {
   const [state, setState] = useState({
     search: "",
     result: [],
-    isTyping: false,
     isLoading: false,
   });
 
-  const { search, result, isTyping, isLoading } = state;
+  const { search, result, isLoading } = state;
 
-  const showNoMatch = result.length === 0 && isTyping;
+  const isShowNotFound = result.length === 0 && !!search.trim() && !isLoading;
+  const isShowSkeletor = isLoading && !!search.trim();
+  const isShowDataList = !!search.trim() && result.length > 0 && !isLoading;
 
   useEffect(() => {
     const controller = new AbortController();
@@ -37,11 +38,6 @@ function App() {
 
     const fetchData = async () => {
       try {
-        setState((prevState) => ({
-          ...prevState,
-          isLoading: true,
-        }));
-
         const url = `http://localhost:3000/api?s=${search}`;
         const response = await fetch(url, { signal });
 
@@ -53,8 +49,7 @@ function App() {
 
         setState((prevState) => ({
           ...prevState,
-          result: search.trim() ? data : [],
-          isTyping: !!search.trim(),
+          result: data,
           isLoading: false,
         }));
       } catch (error) {
@@ -105,32 +100,28 @@ function App() {
         type="search"
         autoFocus
         placeholder="Search for something..."
-        className={
-          search.trim() || result.length || showNoMatch ? "active" : ""
-        }
+        className={search.trim() ? "active" : ""}
       />
       <hr />
 
       <div className="search-result">
-        {isLoading &&
-          !result.length &&
-          !!search.trim() &&
-          !showNoMatch &&
+        {isShowSkeletor &&
           new Array(3).fill().map((_, index) => <MyLoader key={index} />)}
-        {result.map((item, index) => (
-          <div
-            onClick={() => getItemDetail(item)}
-            key={index}
-            className="search-result-item"
-          >
-            <img src={item.image} alt="" />
-            <div className="info">
-              <h3>{item.title}</h3>
-              <p>{item.data}</p>
+        {isShowDataList &&
+          result.map((item, index) => (
+            <div
+              onClick={() => getItemDetail(item)}
+              key={index}
+              className="search-result-item"
+            >
+              <img src={item.image} alt="" />
+              <div className="info">
+                <h3>{item.title}</h3>
+                <p>{item.data}</p>
+              </div>
             </div>
-          </div>
-        ))}
-        {showNoMatch && (
+          ))}
+        {isShowNotFound && (
           <div className="not-found">No results found for "{search}"!</div>
         )}
       </div>
