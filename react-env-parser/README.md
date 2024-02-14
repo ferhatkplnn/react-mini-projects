@@ -1,8 +1,6 @@
-# React + Vite
+# Eeact Env Parser
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[DEMO](https://pathetic-power.surge.sh/)
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![image](https://github.com/ferhatkplnn/react-mini-projects/assets/29931637/7b4dfd49-fa2e-46fc-97be-a128307164ef)
